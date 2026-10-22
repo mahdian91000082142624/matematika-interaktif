@@ -3,16 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Matematika XI MA Interaktif - Memperdalam Matematika secara Mendalam</title>
+  <title>Matematika XI MA Interaktif - Memperdalam Matematika Secara Mendalam</title>
   <!-- Tailwind CSS -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Font Awesome -->
+  <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <!-- KaTeX for math formulas -->
+  <!-- KaTeX for math formatting -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
-  <!-- Google Fonts: Plus Jakarta Sans -->
+  <!-- Google Font: Plus Jakarta Sans -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <script>
@@ -23,12 +23,13 @@
             brand: {
               teal: '#0D9488',
               tealLight: '#CCFBF1',
-              coral: '#F97316',
-              coralLight: '#FFEDD5',
-              navy: '#1E1B4B',
-              purple: '#8B5CF6',
-              purpleLight: '#EDE9FE',
-              amber: '#F59E0B'
+              amber: '#F59E0B',
+              amberLight: '#FEF3C7',
+              violet: '#7C3AED',
+              violetLight: '#EDE9FE',
+              rose: '#E11D48',
+              navy: '#0F172A',
+              softBg: '#F1F5F9'
             }
           },
           fontFamily: {
@@ -40,17 +41,17 @@
   </script>
   <style>
     body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #F8FAFC; }
-    .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
-    .tab-active { background-color: #0D9488; color: white; }
+    .glass-card { background: rgba(255, 255, 255, 0.96); backdrop-filter: blur(12px); border: 1px solid rgba(226, 232, 240, 0.9); }
+    .tab-active { background-color: #0D9488; color: white; box-shadow: 0 4px 12px rgba(13, 148, 136, 0.25); }
     .math-matrix {
       display: inline-flex;
       align-items: center;
-      border-left: 2px solid #0D9488;
-      border-right: 2px solid #0D9488;
-      padding: 2px 8px;
-      border-radius: 6px;
+      border-left: 3px solid #0D9488;
+      border-right: 3px solid #0D9488;
+      padding: 4px 10px;
+      border-radius: 8px;
       margin: 0 4px;
-      background-color: rgba(13, 148, 136, 0.05);
+      background-color: rgba(13, 148, 136, 0.06);
     }
     .custom-scrollbar::-webkit-scrollbar { width: 6px; height: 6px; }
     .custom-scrollbar::-webkit-scrollbar-thumb { background: #CBD5E1; border-radius: 4px; }
@@ -59,165 +60,169 @@
 </head>
 <body class="text-slate-800 min-h-screen flex flex-col justify-between">
 
-  <!-- Header / Navigation -->
-  <header class="bg-white border-b border-slate-200 sticky top-0 z-50 shadow-sm">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex flex-wrap justify-between items-center gap-4">
+  <!-- Navigation Header -->
+  <header class="bg-white/90 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50 shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center gap-4">
       <div class="flex items-center gap-3">
-        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-teal to-brand-purple flex items-center justify-center text-white text-xl font-bold shadow-md shadow-teal-500/20">
-          <i class="fa-solid font-bold fa-square-root-variable"></i>
+        <div class="w-11 h-11 rounded-2xl bg-gradient-to-tr from-brand-teal via-brand-amber to-brand-violet flex items-center justify-center text-white text-xl font-bold shadow-md shadow-teal-500/20">
+          <i class="fa-solid fa-shapes"></i>
         </div>
         <div>
-          <h1 class="text-lg font-bold text-slate-900 leading-tight">Math MA Interactive XI</h1>
+          <h1 class="text-lg font-extrabold text-slate-900 leading-tight">Math MA Interactive XI</h1>
           <p class="text-xs text-brand-teal font-semibold">"Menuntut ilmu adalah bagian dari ibadah"</p>
         </div>
       </div>
 
-      <!-- Navigation Tabs -->
+      <!-- Nav Tabs -->
       <nav class="flex items-center gap-1 bg-slate-100 p-1.5 rounded-2xl border border-slate-200">
-        <button onclick="switchTab('materi')" id="nav-materi" class="px-4 py-2 rounded-xl font-semibold text-sm transition-all tab-active flex items-center gap-2">
+        <button onclick="switchTab('materi')" id="nav-materi" class="px-4 py-2 rounded-xl font-bold text-sm transition-all tab-active flex items-center gap-2">
           <i class="fa-solid fa-book-open"></i> Modul Pembelajaran
         </button>
-        <button onclick="switchTab('kuis')" id="nav-kuis" class="px-4 py-2 rounded-xl font-semibold text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-2">
+        <button onclick="switchTab('kuis')" id="nav-kuis" class="px-4 py-2 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-2">
           <i class="fa-solid fa-graduation-cap"></i> Kuis Step-by-Step
         </button>
       </nav>
     </div>
   </header>
 
-  <!-- Main Container -->
-  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1 w-full">
+  <!-- Main Workspace -->
+  <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 flex-1 w-full">
 
-    <!-- Islamic Motivation Banner -->
-    <div class="mb-8 rounded-2xl bg-gradient-to-r from-brand-navy via-slate-900 to-brand-purple p-6 text-white shadow-xl relative overflow-hidden">
-      <div class="absolute -right-10 -bottom-10 opacity-10 text-9xl text-white pointer-events-none">
-        <i class="fa-solid fa-star-and-crescent"></i>
+    <!-- Islamic Motivation Hero Banner -->
+    <div class="mb-6 rounded-3xl bg-gradient-to-r from-brand-navy via-slate-900 to-brand-violet p-6 text-white shadow-xl relative overflow-hidden">
+      <div class="absolute -right-8 -bottom-10 opacity-10 text-9xl text-white pointer-events-none">
+        <i class="fa-solid fa-calculator"></i>
       </div>
       <div class="relative z-10 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
         <div>
-          <span class="inline-block px-3 py-1 bg-teal-500/20 border border-teal-400/30 text-teal-300 rounded-full text-xs font-semibold mb-2">
-            <i class="fa-solid fa-leaf mr-1"></i> Kelas XI Madrasah Aliyah
+          <span class="inline-block px-3 py-1 bg-teal-500/20 border border-teal-400/30 text-teal-300 rounded-full text-xs font-bold mb-2">
+            <i class="fa-solid fa-star-and-crescent mr-1"></i> Kelas XI Madrasah Aliyah
           </span>
-          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Memperdalam Matematika secara Mendalam</h2>
-          <p class="text-slate-300 text-sm mt-1 max-w-2xl">
-            Selamat datang! Mari pelajari konsep Matriks Transpose, Invers Matriks, Komposisi Fungsi, dan Lingkaran secara logis, terstruktur, dan penuh keindahan.
+          <h2 class="text-2xl sm:text-3xl font-extrabold text-white">Memperdalam Matematika Kelas XI Secara Mendalam</h2>
+          <p class="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl">
+            Pahami logika di balik setiap rumus, nikmati visualisasi prosesnya, dan latih penalaranmu melalui kuis interaktif dengan pembimbing narasi audio.
           </p>
         </div>
-        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-3 rounded-xl border border-white/10">
+        <div class="flex items-center gap-3 bg-white/10 backdrop-blur-md px-4 py-3 rounded-2xl border border-white/10">
           <i class="fa-solid fa-quote-left text-brand-amber text-xl"></i>
           <p class="text-xs text-slate-200 italic">
-            "Allah mengangkat derajat orang-orang yang beriman dan berilmu di antara kamu."<br><span class="font-semibold text-brand-amber text-[10px] not-italic">— QS. Al-Mujadilah: 11</span>
+            "Allah mengangkat derajat orang-orang yang berilmu di antara kamu."<br><span class="font-semibold text-brand-amber text-[10px] not-italic">— QS. Al-Mujadilah: 11</span>
           </p>
         </div>
       </div>
     </div>
 
     <!-- TAB 1: MODUL PEMBELAJARAN -->
-    <section id="tab-materi-content" class="space-y-8">
-      <!-- Topik Selection Grid -->
+    <section id="tab-materi-content" class="space-y-6">
       <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
         <button onclick="showTopic('transpose')" id="topic-btn-transpose" class="p-4 rounded-2xl border-2 transition-all text-left glass-card border-brand-teal bg-teal-50/50 shadow-sm">
-          <div class="w-10 h-10 rounded-xl bg-brand-teal text-white flex items-center justify-center font-bold mb-3">
+          <div class="w-10 h-10 rounded-xl bg-brand-teal text-white flex items-center justify-center font-bold mb-3 shadow-md shadow-teal-500/30">
             <i class="fa-solid fa-table-cells"></i>
           </div>
-          <h3 class="font-bold text-slate-800 text-sm">1. Matriks Transpose</h3>
+          <h3 class="font-extrabold text-slate-800 text-sm">1. Matriks Transpose</h3>
           <p class="text-xs text-slate-500 mt-1">Tukar Baris & Kolom</p>
         </button>
 
-        <button onclick="showTopic('invers')" id="topic-btn-invers" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-purple transition-all text-left glass-card">
-          <div class="w-10 h-10 rounded-xl bg-brand-purple text-white flex items-center justify-center font-bold mb-3">
-            <i class="fa-solid fa-repeat"></i>
+        <button onclick="showTopic('invers')" id="topic-btn-invers" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-violet transition-all text-left glass-card">
+          <div class="w-10 h-10 rounded-xl bg-brand-violet text-white flex items-center justify-center font-bold mb-3 shadow-md shadow-purple-500/30">
+            <i class="fa-solid fa-rotate-left"></i>
           </div>
-          <h3 class="font-bold text-slate-800 text-sm">2. Invers Matriks</h3>
+          <h3 class="font-extrabold text-slate-800 text-sm">2. Invers Matriks</h3>
           <p class="text-xs text-slate-500 mt-1">Determinan & Adjoin 2x2</p>
         </button>
 
-        <button onclick="showTopic('komposisi')" id="topic-btn-komposisi" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-coral transition-all text-left glass-card">
-          <div class="w-10 h-10 rounded-xl bg-brand-coral text-white flex items-center justify-center font-bold mb-3">
+        <button onclick="showTopic('komposisi')" id="topic-btn-komposisi" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-amber transition-all text-left glass-card">
+          <div class="w-10 h-10 rounded-xl bg-brand-amber text-white flex items-center justify-center font-bold mb-3 shadow-md shadow-amber-500/30">
             <i class="fa-solid fa-diagram-project"></i>
           </div>
-          <h3 class="font-bold text-slate-800 text-sm">3. Komposisi Fungsi</h3>
-          <p class="text-xs text-slate-500 mt-1">Menggabungkan f(x) & g(x)</p>
+          <h3 class="font-extrabold text-slate-800 text-sm">3. Komposisi Fungsi</h3>
+          <p class="text-xs text-slate-500 mt-1">Penggabungan f(x) & g(x)</p>
         </button>
 
-        <button onclick="showTopic('lingkaran')" id="topic-btn-lingkaran" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-amber transition-all text-left glass-card">
-          <div class="w-10 h-10 rounded-xl bg-brand-amber text-white flex items-center justify-center font-bold mb-3">
+        <button onclick="showTopic('lingkaran')" id="topic-btn-lingkaran" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-rose transition-all text-left glass-card">
+          <div class="w-10 h-10 rounded-xl bg-brand-rose text-white flex items-center justify-center font-bold mb-3 shadow-md shadow-rose-500/30">
             <i class="fa-regular fa-circle"></i>
           </div>
-          <h3 class="font-bold text-slate-800 text-sm">4. Lingkaran & Busur</h3>
-          <p class="text-xs text-slate-500 mt-1">Juring, Busur, & Sudut</p>
+          <h3 class="font-extrabold text-slate-800 text-sm">4. Lingkaran & Busur</h3>
+          <p class="text-xs text-slate-500 mt-1">Panjang Busur & Luas Juring</p>
         </button>
       </div>
 
-      <!-- Detail Card Materi Dynamic -->
+      <!-- Detail Card Modul -->
       <div id="materi-detail" class="glass-card rounded-3xl p-6 md:p-8 shadow-sm">
-        <!-- Default Content loaded via JS -->
+        <!-- Rendered via JavaScript -->
       </div>
     </section>
 
-    <!-- TAB 2: KUIS INTERAKTIF STEP-BY-STEP -->
+    <!-- TAB 2: KUIS STEP-BY-STEP -->
     <section id="tab-kuis-content" class="hidden space-y-6">
       
-      <!-- Quiz Header Dashboard -->
+      <!-- Quiz Dashboard -->
       <div class="glass-card p-5 rounded-2xl flex flex-wrap justify-between items-center gap-4">
-        <div class="flex items-center gap-4">
+        <div class="flex items-center gap-3">
           <div class="w-12 h-12 rounded-2xl bg-brand-tealLight text-brand-teal flex items-center justify-center text-xl font-bold">
-            <i class="fa-solid fa-list-check"></i>
+            <i class="fa-solid fa-clipboard-question"></i>
           </div>
           <div>
-            <h2 class="text-lg font-bold text-slate-900">Kuis Penalar Matematika XI</h2>
-            <p class="text-xs text-slate-500">10 Soal Komprehensif tanpa pengulangan dengan Pembimbing Visual & Audio</p>
+            <h2 class="text-lg font-extrabold text-slate-900">Kuis Evaluasi Penalar XI</h2>
+            <p class="text-xs text-slate-500">10 Soal Komprehensif dengan Opsi Teracak (A-D) & Visualisasi Step-by-Step</p>
           </div>
         </div>
 
-        <div class="flex items-center gap-6">
+        <div class="flex items-center gap-5 sm:gap-6">
           <div class="text-center">
-            <span class="text-xs text-slate-500 block">Skor Kamu</span>
+            <span class="text-[11px] text-slate-500 block font-semibold">Skor Kamu</span>
             <span id="quiz-score" class="text-2xl font-black text-brand-teal">0</span>
           </div>
           <div class="h-8 w-px bg-slate-200"></div>
           <div class="text-center">
-            <span class="text-xs text-slate-500 block">Streak</span>
-            <span id="quiz-streak" class="text-2xl font-black text-brand-coral">🔥 0</span>
+            <span class="text-[11px] text-slate-500 block font-semibold">Streak</span>
+            <span id="quiz-streak" class="text-2xl font-black text-brand-amber">🔥 0</span>
           </div>
           <div class="h-8 w-px bg-slate-200"></div>
           <div class="text-center">
-            <span class="text-xs text-slate-500 block">Kemajuan</span>
-            <span id="quiz-progress" class="text-sm font-bold text-slate-700">Soal 1 / 10</span>
+            <span class="text-[11px] text-slate-500 block font-semibold">Timer Soal</span>
+            <span id="quiz-timer" class="text-2xl font-black text-brand-rose">60s</span>
+          </div>
+          <div class="h-8 w-px bg-slate-200"></div>
+          <div class="text-center">
+            <span class="text-[11px] text-slate-500 block font-semibold">Kemajuan</span>
+            <span id="quiz-progress" class="text-sm font-extrabold text-slate-700">Soal 1 / 10</span>
           </div>
         </div>
       </div>
 
-      <!-- Quiz Card Area -->
-      <div id="quiz-box" class="glass-card rounded-3xl p-6 md:p-8 shadow-md">
+      <!-- Main Quiz Card -->
+      <div id="quiz-box" class="glass-card rounded-3xl p-6 md:p-8 shadow-md transition-all">
         <!-- Question Content Rendered via JS -->
       </div>
 
-      <!-- Visual Explanation & Audio Panel (Hidden before answer) -->
-      <div id="quiz-explanation-panel" class="hidden glass-card border-2 border-brand-teal/30 rounded-3xl p-6 md:p-8 bg-slate-50/80 shadow-lg transition-all duration-500">
+      <!-- Step-by-Step Visual Explanation & Audio Control Panel -->
+      <div id="quiz-explanation-panel" class="hidden glass-card border-2 border-brand-teal/30 rounded-3xl p-6 md:p-8 bg-slate-50/90 shadow-xl transition-all duration-500">
         <div class="flex flex-wrap items-center justify-between gap-4 mb-6 border-b border-slate-200 pb-4">
           <div class="flex items-center gap-3">
-            <span class="w-10 h-10 rounded-xl bg-brand-teal text-white flex items-center justify-center font-bold">
+            <span class="w-10 h-10 rounded-xl bg-brand-teal text-white flex items-center justify-center font-bold shadow-md shadow-teal-500/20">
               <i class="fa-solid fa-lightbulb"></i>
             </span>
             <div>
-              <h3 class="text-lg font-bold text-slate-900">Visualisasi & Pembahasan Terstruktur</h3>
-              <p class="text-xs text-slate-500">Pahami setiap langkahnya secara eksplisit</p>
+              <h3 class="text-lg font-extrabold text-slate-900">Visualisasi & Pembahasan Terstruktur</h3>
+              <p class="text-xs text-slate-500">Pahami konsep langkah demi langkah secara eksplisit</p>
             </div>
           </div>
 
-          <!-- Audio Controls -->
-          <div class="flex items-center gap-2 bg-white px-3 py-2 rounded-xl border border-slate-200 shadow-sm">
-            <span class="text-xs font-semibold text-slate-600 mr-1"><i class="fa-solid fa-volume-high text-brand-teal"></i> Narasi Audio:</span>
-            <button id="btn-audio-play" onclick="playAudioStepByStep()" class="w-8 h-8 rounded-lg bg-brand-teal text-white hover:bg-teal-700 flex items-center justify-center transition">
+          <!-- Audio Narration Panel -->
+          <div class="flex items-center gap-2 bg-white px-3 py-2 rounded-2xl border border-slate-200 shadow-sm">
+            <span class="text-xs font-bold text-slate-700 mr-1"><i class="fa-solid fa-volume-high text-brand-teal mr-1"></i> Narasi Audio:</span>
+            <button id="btn-audio-play" onclick="playAudioStepByStep()" class="w-8 h-8 rounded-xl bg-brand-teal text-white hover:bg-teal-700 flex items-center justify-center transition shadow-sm">
               <i class="fa-solid fa-play text-xs"></i>
             </button>
-            <button id="btn-audio-pause" onclick="pauseAudio()" class="w-8 h-8 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 flex items-center justify-center transition">
+            <button id="btn-audio-pause" onclick="pauseAudio()" class="w-8 h-8 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 flex items-center justify-center transition">
               <i class="fa-solid fa-pause text-xs"></i>
             </button>
-            <button id="btn-audio-stop" onclick="stopAudio()" class="w-8 h-8 rounded-lg bg-slate-200 text-slate-700 hover:bg-slate-300 flex items-center justify-center transition">
+            <button id="btn-audio-stop" onclick="stopAudio()" class="w-8 h-8 rounded-xl bg-slate-200 text-slate-700 hover:bg-slate-300 flex items-center justify-center transition">
               <i class="fa-solid fa-stop text-xs"></i>
             </button>
-            <select id="audio-speed" onchange="changeAudioSpeed(this.value)" class="text-xs bg-slate-100 rounded-md border border-slate-300 p-1 font-semibold text-slate-700">
+            <select id="audio-speed" onchange="changeAudioSpeed(this.value)" class="text-xs bg-slate-100 rounded-lg border border-slate-300 px-2 py-1 font-bold text-slate-700">
               <option value="0.8">0.8x</option>
               <option value="1" selected>1.0x</option>
               <option value="1.2">1.2x</option>
@@ -225,18 +230,18 @@
           </div>
         </div>
 
-        <!-- Dynamic Visualization Diagram -->
+        <!-- Dynamic Graph Diagram & Explanation -->
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-center mb-6">
-          <div id="explanation-visual-box" class="bg-white p-4 rounded-2xl border border-slate-200 flex items-center justify-center min-h-[220px]">
-            <!-- SVG / Canvas Graph injected here -->
+          <div id="explanation-visual-box" class="bg-white p-5 rounded-2xl border border-slate-200 flex items-center justify-center min-h-[220px] shadow-inner">
+            <!-- SVG / Canvas Graph Injected Here -->
           </div>
-          <div id="explanation-steps-box" class="space-y-3 text-slate-700 text-sm">
+          <div id="explanation-steps-box" class="space-y-2.5 text-slate-700 text-xs sm:text-sm">
             <!-- Step 1, 2, 3 text injected here -->
           </div>
         </div>
 
         <div class="flex justify-end">
-          <button onclick="nextQuestion()" class="px-6 py-3 rounded-xl bg-brand-teal hover:bg-teal-700 text-white font-bold transition shadow-md shadow-teal-500/20 flex items-center gap-2">
+          <button onclick="nextQuestion()" class="px-6 py-3 rounded-2xl bg-brand-teal hover:bg-teal-700 text-white font-extrabold transition shadow-lg shadow-teal-500/25 flex items-center gap-2">
             Lanjut Soal Berikutnya <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
@@ -249,8 +254,8 @@
   <!-- Footer -->
   <footer class="bg-white border-t border-slate-200 py-6 mt-12">
     <div class="max-w-7xl mx-auto px-4 text-center text-xs text-slate-500 space-y-1">
-      <p class="font-semibold text-slate-700">Media Digital Pembelajaran Matematika Interaktif Kelas XI Madrasah Aliyah</p>
-      <p>Dirancang untuk pemahaman konseptual, terstruktur, dan menyenangkan.</p>
+      <p class="font-extrabold text-slate-700">Media Digital Pembelajaran Matematika Interaktif Kelas XI Madrasah Aliyah</p>
+      <p>Dirancang untuk pemahaman konseptual, terstruktur, dan ramah anak usia remaja.</p>
     </div>
   </footer>
 
@@ -262,26 +267,28 @@
     let quizIndex = 0;
     let quizScore = 0;
     let quizStreak = 0;
+    let quizTimer = 60;
+    let timerInterval = null;
     let currentSpeechUtterance = null;
     let speechSynth = window.speechSynthesis;
     let fullAudioScript = "";
 
-    // --- MATERI CONTENT DATA ---
+    // --- MATERI MODULE DATA ---
     const materiData = {
       transpose: {
         title: "1. Matriks Transpose",
-        subtitle: "Menukar kedudukan baris menjadi kolom dan kolom menjadi baris.",
+        subtitle: "Menukar posisi baris menjadi kolom dan kolom menjadi baris.",
         badge: "Teori Matriks",
         color: "brand-teal",
         content: `
           <div class="space-y-6">
-            <p class="text-slate-600 leading-relaxed">
-              Jika $A$ adalah matriks berordo $m \\times n$, maka <b>Transpose Matriks $A$</b> (dilambangkan $A^T$ atau $A^t$) adalah matriks baru berordo $n \\times m$ yang diperoleh dengan mengubah baris ke-$i$ dari matriks $A$ menjadi kolom ke-$i$ pada matriks $A^T$.
+            <p class="text-slate-600 leading-relaxed text-sm">
+              Jika $A$ adalah matriks berordo $m \\times n$, maka <b>Transpose Matriks $A$</b> (dilambangkan $A^T$) adalah matriks baru berordo $n \\times m$ yang diperoleh dengan cara mengubah elemen baris ke-$i$ menjadi elemen kolom ke-$i$.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 bg-slate-50 p-6 rounded-2xl border border-slate-200">
               <div class="space-y-3">
-                <h4 class="font-bold text-slate-800 text-sm border-b pb-2">Matriks Semula $A$ (Ordo $2 \\times 3$)</h4>
+                <h4 class="font-extrabold text-slate-800 text-sm border-b pb-2">Matriks Semula $A$ (Ordo $2 \\times 3$)</h4>
                 <div class="text-center py-4 bg-white rounded-xl border border-slate-200 shadow-sm">
                   $$A = \\begin{pmatrix} 3 & 7 & -1 \\\\ 2 & 0 & 5 \\end{pmatrix}$$
                 </div>
@@ -289,7 +296,7 @@
               </div>
 
               <div class="space-y-3">
-                <h4 class="font-bold text-slate-800 text-sm border-b pb-2">Hasil Transpose $A^T$ (Ordo $3 \\times 2$)</h4>
+                <h4 class="font-extrabold text-slate-800 text-sm border-b pb-2">Hasil Transpose $A^T$ (Ordo $3 \\times 2$)</h4>
                 <div class="text-center py-4 bg-white rounded-xl border border-slate-200 shadow-sm">
                   $$A^T = \\begin{pmatrix} 3 & 2 \\\\ 7 & 0 \\\\ -1 & 5 \\end{pmatrix}$$
                 </div>
@@ -297,12 +304,12 @@
               </div>
             </div>
 
-            <div class="bg-teal-50 border-l-4 border-brand-teal p-4 rounded-r-xl">
-              <h5 class="font-bold text-brand-teal text-sm">Sifat-Sifat Transpose Matriks:</h5>
+            <div class="bg-teal-50 border-l-4 border-brand-teal p-4 rounded-r-2xl">
+              <h5 class="font-bold text-brand-teal text-xs sm:text-sm">Sifat-Sifat Transpose Matriks:</h5>
               <ul class="list-disc list-inside text-xs text-slate-700 mt-2 space-y-1">
                 <li>$(A^T)^T = A$</li>
                 <li>$(A + B)^T = A^T + B^T$</li>
-                <li>$(k \\cdot A)^T = k \\cdot A^T$ (dengan $k$ konstanta)</li>
+                <li>$(k \\cdot A)^T = k \\cdot A^T$ (dengan $k$ skalar)</li>
                 <li>$(A \\cdot B)^T = B^T \\cdot A^T$</li>
               </ul>
             </div>
@@ -313,28 +320,28 @@
         title: "2. Invers Matriks 2x2",
         subtitle: "Menentukan kebalikan matriks yang menghasilkan matriks identitas.",
         badge: "Aljabar Matriks",
-        color: "brand-purple",
+        color: "brand-violet",
         content: `
           <div class="space-y-6">
-            <p class="text-slate-600 leading-relaxed">
-              Invers dari matriks persegi $A$, ditulis $A^{-1}$, memenuhi $A \\cdot A^{-1} = A^{-1} \\cdot A = I$ (Matriks Identitas). Untuk matriks $2 \\times 2$:
+            <p class="text-slate-600 leading-relaxed text-sm">
+              Invers matriks persegi $A$, ditulis $A^{-1}$, memenuhi $A \\cdot A^{-1} = A^{-1} \\cdot A = I$ (Matriks Identitas).
             </p>
 
-            <div class="bg-purple-50 p-6 rounded-2xl border border-purple-200 text-center space-y-4">
-              <p class="font-semibold text-slate-800">Jika $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, maka Inversnya adalah:</p>
-              <div class="text-lg text-brand-purple font-bold">
+            <div class="bg-violet-50 p-6 rounded-2xl border border-violet-200 text-center space-y-4">
+              <p class="font-bold text-slate-800 text-sm">Jika $A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$, maka Inversnya adalah:</p>
+              <div class="text-lg text-brand-violet font-bold">
                 $$A^{-1} = \\frac{1}{\\det(A)} \\cdot \\text{Adj}(A) = \\frac{1}{ad - bc} \\begin{pmatrix} d & -b \\\\ -c & a \\end{pmatrix}$$
               </div>
-              <p class="text-xs text-slate-600">Syarat: Determinan $\\det(A) = ad - bc \\neq 0$. Jika $\\det(A) = 0$, matriks disebut <b>Singular</b> (tidak punya invers).</p>
+              <p class="text-xs text-slate-600">Syarat: Determinan $\\det(A) = ad - bc \\neq 0$. Jika $\\det(A) = 0$, matriks dinamakan <b>Singular</b>.</p>
             </div>
 
             <div class="space-y-3">
-              <h4 class="font-bold text-slate-800 text-sm">Contoh Langkah Penyelesaian:</h4>
+              <h4 class="font-extrabold text-slate-800 text-sm">Contoh Ringkas:</h4>
               <div class="bg-white p-4 rounded-xl border border-slate-200 text-xs space-y-2">
-                <p><b>Soal:</b> Cari invers dari $A = \\begin{pmatrix} 4 & 1 \\\\ 3 & 1 \\end{pmatrix}$</p>
-                <p><b>Langkah 1 (Determinan):</b> $\\det(A) = (4)(1) - (1)(3) = 4 - 3 = 1$</p>
-                <p><b>Langkah 2 (Adjoin):</b> Tukar posisi $(a, d)$ dan ubah tanda $(b, c) \\rightarrow \\begin{pmatrix} 1 & -1 \\\\ -3 & 4 \\end{pmatrix}$</p>
-                <p><b>Langkah 3 (Hasil Invers):</b> $A^{-1} = \\frac{1}{1} \\begin{pmatrix} 1 & -1 \\\\ -3 & 4 \\end{pmatrix} = \\begin{pmatrix} 1 & -1 \\\\ -3 & 4 \\end{pmatrix}$</p>
+                <p><b>Soal:</b> Invers dari $A = \\begin{pmatrix} 4 & 1 \\\\ 3 & 1 \\end{pmatrix}$</p>
+                <p><b>1. Determinan:</b> $\\det(A) = (4)(1) - (1)(3) = 4 - 3 = 1$</p>
+                <p><b>2. Adjoin:</b> Tukar $(4 \\leftrightarrow 1)$ dan kali $-1$ elemen samping $\\rightarrow \\begin{pmatrix} 1 & -1 \\\\ -3 & 4 \\end{pmatrix}$</p>
+                <p><b>3. Invers:</b> $A^{-1} = \\frac{1}{1} \\begin{pmatrix} 1 & -1 \\\\ -3 & 4 \\end{pmatrix} = \\begin{pmatrix} 1 & -1 \\\\ -3 & 4 \\end{pmatrix}$</p>
               </div>
             </div>
           </div>
@@ -344,46 +351,32 @@
         title: "3. Komposisi Fungsi",
         subtitle: "Penggabungan operasi dua fungsi $f(x)$ dan $g(x)$ secara berurutan.",
         badge: "Fungsi Aljabar",
-        color: "brand-coral",
+        color: "brand-amber",
         content: `
           <div class="space-y-6">
-            <p class="text-slate-600 leading-relaxed">
-              Komposisi fungsi adalah penggabungan dua fungsi sedemikian rupa sehingga hasil dari fungsi pertama menjadi input bagi fungsi kedua.
+            <p class="text-slate-600 leading-relaxed text-sm">
+              Komposisi fungsi memproses hasil output fungsi pertama sebagai input bagi fungsi kedua.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <div class="bg-orange-50 p-5 rounded-2xl border border-orange-200">
-                <h4 class="font-bold text-brand-coral text-sm mb-2">$(f \\circ g)(x)$ — Dibaca "$f$ bundaran $g$"</h4>
+              <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200">
+                <h4 class="font-bold text-brand-amber text-sm mb-2">$(f \\circ g)(x)$ — "$f$ bundaran $g$"</h4>
                 <p class="text-xs text-slate-700 leading-relaxed mb-3">
-                  Nilai $x$ dimasukkan terlebih dahulu ke fungsi $g(x)$, kemudian hasilnya dimasukkan ke fungsi $f(x)$.
+                  Masukkan $g(x)$ terlebih dahulu, lalu substitusikan ke fungsi $f(x)$.
                 </p>
-                <div class="text-center bg-white p-3 rounded-xl border border-orange-200 font-bold text-slate-800">
+                <div class="text-center bg-white p-3 rounded-xl border border-amber-200 font-bold text-slate-800">
                   $$(f \\circ g)(x) = f(g(x))$$
                 </div>
               </div>
 
-              <div class="bg-orange-50 p-5 rounded-2xl border border-orange-200">
-                <h4 class="font-bold text-brand-coral text-sm mb-2">$(g \\circ f)(x)$ — Dibaca "$g$ bundaran $f$"</h4>
+              <div class="bg-amber-50 p-5 rounded-2xl border border-amber-200">
+                <h4 class="font-bold text-brand-amber text-sm mb-2">$(g \\circ f)(x)$ — "$g$ bundaran $f$"</h4>
                 <p class="text-xs text-slate-700 leading-relaxed mb-3">
-                  Nilai $x$ dimasukkan terlebih dahulu ke fungsi $f(x)$, kemudian hasilnya dimasukkan ke fungsi $g(x)$.
+                  Masukkan $f(x)$ terlebih dahulu, lalu substitusikan ke fungsi $g(x)$.
                 </p>
-                <div class="text-center bg-white p-3 rounded-xl border border-orange-200 font-bold text-slate-800">
+                <div class="text-center bg-white p-3 rounded-xl border border-amber-200 font-bold text-slate-800">
                   $$(g \\circ f)(x) = g(f(x))$$
                 </div>
-              </div>
-            </div>
-
-            <!-- Visual Flow Diagram -->
-            <div class="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-center">
-              <span class="text-xs font-semibold text-slate-500 block mb-3">Diagram Alur Proses $(f \\circ g)(x)$</span>
-              <div class="flex items-center justify-center gap-2 sm:gap-4 text-xs font-bold">
-                <div class="bg-slate-200 px-3 py-2 rounded-lg text-slate-800">Input $x$</div>
-                <i class="fa-solid fa-arrow-right text-brand-coral"></i>
-                <div class="bg-amber-100 border border-amber-300 px-3 py-2 rounded-lg text-amber-900">Proses $g(x)$</div>
-                <i class="fa-solid fa-arrow-right text-brand-coral"></i>
-                <div class="bg-teal-100 border border-teal-300 px-3 py-2 rounded-lg text-teal-900">Proses $f(g(x))$</div>
-                <i class="fa-solid fa-arrow-right text-brand-coral"></i>
-                <div class="bg-brand-coral text-white px-3 py-2 rounded-lg">Hasil Akhir</div>
               </div>
             </div>
           </div>
@@ -393,51 +386,34 @@
         title: "4. Lingkaran & Busur Lingkaran",
         subtitle: "Unsur-unsur geometri lingkaran, panjang busur, dan luas juring.",
         badge: "Geometri",
-        color: "brand-amber",
+        color: "brand-rose",
         content: `
           <div class="space-y-6">
-            <p class="text-slate-600 leading-relaxed">
-              Lingkaran adalah himpunan titik-titik yang berjarak sama terhadap titik pusat $O$. Sudut pusat $\\theta$ menentukan proporsi panjang busur dan luas juring.
+            <p class="text-slate-600 leading-relaxed text-sm">
+              Sudut pusat $\\theta$ membagi keliling dan luas lingkaran secara proporsional.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
-              <!-- SVG Interactive Geometric Model -->
               <div class="bg-white p-4 rounded-2xl border border-slate-200 flex justify-center shadow-sm">
-                <svg width="220" height="220" viewBox="0 0 200 200" class="overflow-visible">
-                  <!-- Circle base -->
+                <svg width="200" height="200" viewBox="0 0 200 200">
                   <circle cx="100" cy="100" r="70" fill="none" stroke="#E2E8F0" stroke-width="4"/>
-                  <!-- Juring / Sector -->
-                  <path d="M 100 100 L 170 100 A 70 70 0 0 0 135 39 Z" fill="rgba(245, 158, 11, 0.2)" stroke="#F59E0B" stroke-width="2"/>
-                  <!-- Busur Highlight -->
-                  <path d="M 170 100 A 70 70 0 0 0 135 39" fill="none" stroke="#EF4444" stroke-width="5" stroke-linecap="round"/>
-                  <!-- Center point -->
-                  <circle cx="100" cy="100" r="4" fill="#1E1B4B"/>
-                  <!-- Lines -->
-                  <line x1="100" y1="100" x2="170" y2="100" stroke="#1E1B4B" stroke-dasharray="3,3"/>
-                  <line x1="100" y1="100" x2="135" y2="39" stroke="#1E1B4B" stroke-dasharray="3,3"/>
-                  <!-- Labels -->
+                  <path d="M 100 100 L 170 100 A 70 70 0 0 0 135 39 Z" fill="rgba(225, 29, 72, 0.15)" stroke="#E11D48" stroke-width="2"/>
+                  <path d="M 170 100 A 70 70 0 0 0 135 39" fill="none" stroke="#E11D48" stroke-width="5" stroke-linecap="round"/>
+                  <circle cx="100" cy="100" r="4" fill="#0F172A"/>
                   <text x="100" y="115" text-anchor="middle" class="text-[10px] font-bold fill-slate-800">O</text>
-                  <text x="130" y="90" class="text-[10px] font-bold fill-amber-600">θ = 60°</text>
-                  <text x="160" y="60" class="text-[11px] font-bold fill-red-600">Busur L</text>
-                  <text x="125" y="115" class="text-[10px] font-semibold fill-slate-600">r</text>
+                  <text x="130" y="85" class="text-[10px] font-bold fill-rose-600">θ</text>
                 </svg>
               </div>
 
-              <!-- Formula List -->
               <div class="space-y-3 text-xs">
-                <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900 block mb-1">1. Panjang Busur ($L$):</span>
+                <div class="p-3 bg-rose-50 rounded-xl border border-rose-200">
+                  <span class="font-bold text-rose-900 block mb-1">1. Panjang Busur ($L$):</span>
                   $$L = \\frac{\\theta}{360^\\circ} \\times 2\\pi r$$
                 </div>
 
-                <div class="p-3 bg-amber-50 rounded-xl border border-amber-200">
-                  <span class="font-bold text-amber-900 block mb-1">2. Luas Juring ($L_J$):</span>
+                <div class="p-3 bg-rose-50 rounded-xl border border-rose-200">
+                  <span class="font-bold text-rose-900 block mb-1">2. Luas Juring ($L_J$):</span>
                   $$L_J = \\frac{\\theta}{360^\\circ} \\times \\pi r^2$$
-                </div>
-
-                <div class="p-3 bg-slate-100 rounded-xl border border-slate-200">
-                  <span class="font-bold text-slate-800 block mb-1">3. Persamaan Lingkaran Pusat $(0,0)$:</span>
-                  $$x^2 + y^2 = r^2$$
                 </div>
               </div>
             </div>
@@ -446,26 +422,26 @@
       }
     };
 
-    // --- 10 SOAL KUIS UNIK TERSTRUKTUR ---
+    // --- 10 SOAL KUIS DENGAN JAWABAN BENAR TERDISTRIBUSI ACAK (A, B, C, D) ---
     const quizQuestions = [
       {
         id: 1,
         topic: "Matriks Transpose",
         question: "Diketahui matriks $A = \\begin{pmatrix} 2 & -5 \\\\ 4 & 1 \\end{pmatrix}$. Tentukan matriks transpose $A^T$!",
         options: [
-          "\\begin{pmatrix} 2 & 4 \\\\ -5 & 1 \\end{pmatrix}",
           "\\begin{pmatrix} -2 & 5 \\\\ -4 & -1 \\end{pmatrix}",
+          "\\begin{pmatrix} 2 & 4 \\\\ -5 & 1 \\end{pmatrix}", // BENAR (B)
           "\\begin{pmatrix} 1 & -5 \\\\ 4 & 2 \\end{pmatrix}",
           "\\begin{pmatrix} 2 & -5 \\\\ 4 & 1 \\end{pmatrix}"
         ],
-        correct: 0,
+        correct: 1, // B
         explanationSteps: [
-          "<b>Langkah 1:</b> Pahami bahwa transpose matriks mengubah baris menjadi kolom.",
-          "<b>Langkah 2:</b> Baris pertama $(2, -5)$ dijadikan kolom pertama $\\begin{pmatrix} 2 \\\\ -5 \\end{pmatrix}$.",
-          "<b>Langkah 3:</b> Baris kedua $(4, 1)$ dijadikan kolom kedua $\\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix}$.",
+          "<b>Langkah 1:</b> Transpose merubah baris menjadi kolom.",
+          "<b>Langkah 2:</b> Baris 1 $(2, -5)$ diubah menjadi Kolom 1 $\\begin{pmatrix} 2 \\\\ -5 \\end{pmatrix}$.",
+          "<b>Langkah 3:</b> Baris 2 $(4, 1)$ diubah menjadi Kolom 2 $\\begin{pmatrix} 4 \\\\ 1 \\end{pmatrix}$.",
           "<b>Hasil Akhir:</b> $A^T = \\begin{pmatrix} 2 & 4 \\\\ -5 & 1 \\end{pmatrix}$."
         ],
-        spokenAudio: "Mari kita selesaikan soal transpose matriks. Langkah pertama, ingat bahwa transpose mengubah setiap elemen baris menjadi elemen kolom. Baris pertama berisi angka 2 dan minus 5, diubah menjadi kolom pertama. Baris kedua berisi angka 4 dan 1, diubah menjadi kolom kedua. Sehingga hasil akhirnya adalah matriks dengan baris pertama 2, 4 dan baris kedua minus 5, 1.",
+        spokenAudio: "Langkah menyelesaikan transpose matriks A. Baris pertama berisi 2 dan minus 5 diubah menjadi kolom pertama. Baris kedua berisi 4 dan 1 diubah menjadi kolom kedua. Sehingga hasil transpose matriks A adalah opsi B.",
         visualType: "matrix_transpose",
         visualData: { orig: [["2","-5"],["4","1"]], trans: [["2","4"],["-5","1"]] }
       },
@@ -474,18 +450,18 @@
         topic: "Invers Matriks",
         question: "Hitunglah invers dari matriks $M = \\begin{pmatrix} 3 & 2 \\\\ 1 & 1 \\end{pmatrix}$!",
         options: [
-          "\\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix}",
           "\\begin{pmatrix} 3 & -2 \\\\ -1 & 1 \\end{pmatrix}",
           "\\begin{pmatrix} -1 & 2 \\\\ 1 & -3 \\end{pmatrix}",
+          "\\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix}", // BENAR (C)
           "\\begin{pmatrix} 1 & 2 \\\\ 1 & 3 \\end{pmatrix}"
         ],
-        correct: 0,
+        correct: 2, // C
         explanationSteps: [
           "<b>Langkah 1 (Determinan):</b> $\\det(M) = (3)(1) - (2)(1) = 3 - 2 = 1$.",
-          "<b>Langkah 2 (Adjoin):</b> Tukar elemen utama $(3 \\leftrightarrow 1)$ dan kali $-1$ elemen samping $\\rightarrow \\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix}$.",
-          "<b>Langkah 3 (Hitung Invers):</b> $M^{-1} = \\frac{1}{\\det(M)} \\cdot \\text{Adj}(M) = \\frac{1}{1} \\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix} = \\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix}$."
+          "<b>Langkah 2 (Adjoin):</b> Tukar diagonal utama $(3 \\leftrightarrow 1)$ dan kalikan $-1$ diagonal samping $\\rightarrow \\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix}$.",
+          "<b>Langkah 3 (Hitung Invers):</b> $M^{-1} = \\frac{1}{1} \\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix} = \\begin{pmatrix} 1 & -2 \\\\ -1 & 3 \\end{pmatrix}$."
         ],
-        spokenAudio: "Untuk mencari invers matriks M berordo dua kali dua. Pertama, hitung determinan yaitu 3 dikali 1 dikurangi 2 dikali 1, hasilnya 1. Kedua, cari adjoin dengan menukar posisi 3 dan 1, lalu beri tanda negatif pada angka 2 dan 1. Ketiga, bagi adjoin dengan determinan satu. Maka didapatkan matriks invers baris pertama 1, minus 2 dan baris kedua minus 1, 3.",
+        spokenAudio: "Untuk mencari invers matriks M. Pertama hitung determinan, yaitu 3 dikali 1 dikurangi 2 dikali 1 sama dengan 1. Kedua cari adjoin dengan menukar 3 dan 1, serta memberi tanda minus pada 2 dan 1. Karena determinan bernilai 1, maka invers matriks M sama dengan adjoinnya yaitu opsi C.",
         visualType: "matrix_inverse",
         visualData: { det: "1", adj: [["1","-2"],["-1","3"]] }
       },
@@ -494,39 +470,39 @@
         topic: "Komposisi Fungsi",
         question: "Jika $f(x) = 2x + 3$ dan $g(x) = x^2 - 1$, tentukan rumus fungsi komposisi $(f \\circ g)(x)$!",
         options: [
-          "2x^2 + 1",
           "2x^2 + 5",
           "4x^2 + 12x + 8",
-          "2x^2 - 1"
+          "2x^2 - 1",
+          "2x^2 + 1" // BENAR (D)
         ],
-        correct: 0,
+        correct: 3, // D
         explanationSteps: [
-          "<b>Langkah 1:</b> Pahami definisi $(f \\circ g)(x) = f(g(x))$.",
-          "<b>Langkah 2:</b> Substitusikan $g(x) = x^2 - 1$ ke dalam rumus $f(x)$.",
-          "<b>Langkah 3:</b> Hitung: $f(x^2 - 1) = 2(x^2 - 1) + 3 = 2x^2 - 2 + 3 = 2x^2 + 1$."
+          "<b>Langkah 1:</b> Pahami bahwa $(f \\circ g)(x) = f(g(x))$.",
+          "<b>Langkah 2:</b> Substitusi $g(x) = x^2 - 1$ ke fungsi $f(x)$.",
+          "<b>Langkah 3:</b> $f(x^2 - 1) = 2(x^2 - 1) + 3 = 2x^2 - 2 + 3 = 2x^2 + 1$."
         ],
-        spokenAudio: "Langkah menyelesaikan komposisi f bundaran g dari x. Pertama, masukkan fungsi g x yaitu x kuadrat minus 1 ke dalam fungsi f x. Fungsi f merubah variabelnya menjadi dua kali variabel ditambah 3. Berarti 2 dikali dalam kurung x kuadrat minus 1, lalu ditambah 3. Kalikan masuk menjadi 2 x kuadrat minus 2 ditambah 3. Hasil akhirnya adalah 2 x kuadrat ditambah 1.",
+        spokenAudio: "Mencari komposisi f bundaran g dari x. Masukkan fungsi g x yaitu x kuadrat minus 1 ke dalam fungsi f x. Maka 2 dikali dalam kurung x kuadrat minus 1, lalu ditambah 3. Hasil perkaliannya 2 x kuadrat minus 2 ditambah 3, menghasilkan 2 x kuadrat ditambah 1 yaitu opsi D.",
         visualType: "function_flow",
         visualData: { fx: "2x + 3", gx: "x² - 1", res: "2x² + 1" }
       },
       {
         id: 4,
         topic: "Lingkaran & Busur",
-        question: "Sebuah lingkaran berjari-jari $r = 14\\text{ cm}$ memiliki sudut pusat $\\theta = 90^\\circ$. Berapakah panjang busur di hadapan sudut tersebut? (Gunakan $\\pi = \\frac{22}{7}$)",
+        question: "Sebuah lingkaran berjari-jari $r = 14\\text{ cm}$ memiliki sudut pusat $\\theta = 90^\\circ$. Berapakah panjang busurnya? (Gunakan $\\pi = \\frac{22}{7}$)",
         options: [
-          "22 cm",
-          "44 cm",
-          "11 cm",
-          "88 cm"
+          "22\\text{ cm}", // BENAR (A)
+          "44\\text{ cm}",
+          "11\\text{ cm}",
+          "88\\text{ cm}"
         ],
-        correct: 0,
+        correct: 0, // A
         explanationSteps: [
-          "<b>Langkah 1:</b> Rumus panjang busur $L = \\frac{\\theta}{360^\\circ} \\times 2 \\pi r$.",
-          "<b>Langkah 2:</b> Substitusi nilai: $L = \\frac{90^\\circ}{360^\\circ} \\times 2 \\times \\frac{22}{7} \\times 14$.",
-          "<b>Langkah 3:</b> Sederhanakan pecahan $\\frac{90}{360} = \\frac{1}{4}$ dan $(2 \\times 14) / 7 = 4$.",
-          "<b>Langkah 4:</b> $L = \\frac{1}{4} \\times 2 \\times 22 \\times 2 = 22\\text{ cm}$."
+          "<b>Langkah 1:</b> Rumus Panjang Busur $L = \\frac{\\theta}{360^\\circ} \\times 2 \\pi r$.",
+          "<b>Langkah 2:</b> $L = \\frac{90^\\circ}{360^\\circ} \\times 2 \\times \\frac{22}{7} \\times 14$.",
+          "<b>Langkah 3:</b> Sederhanakan pecahan $\\frac{90}{360} = \\frac{1}{4}$ dan $2 \\times \\frac{22}{7} \\times 14 = 88$.",
+          "<b>Langkah 4:</b> $L = \\frac{1}{4} \\times 88 = 22\\text{ cm}$."
         ],
-        spokenAudio: "Menghitung panjang busur lingkaran dengan sudut pusat 90 derajat dan jari-jari 14 centimeter. Gunakan rumus sudut per 360 derajat dikali keliling lingkaran. 90 per 360 disederhanakan menjadi seperempat. Keliling lingkaran dengan jari-jari 14 adalah 88 centimeter. Maka seperempat dikali 88 sama dengan 22 centimeter.",
+        spokenAudio: "Menghitung panjang busur dengan sudut 90 derajat dan jari-jari 14 cm. Sudut 90 per 360 sama dengan seperempat. Keliling lingkaran total adalah 88 cm. Maka panjang busurnya adalah seperempat dari 88 yaitu 22 cm, opsi A.",
         visualType: "circle_arc",
         visualData: { angle: 90, radius: 14, arcLength: 22 }
       },
@@ -535,18 +511,18 @@
         topic: "Matriks Transpose",
         question: "Diketahui $A = \\begin{pmatrix} x+y & 3 \\\\ 2 & 4 \\end{pmatrix}$ dan $B = \\begin{pmatrix} 7 & 2 \\\\ 3 & 4 \\end{pmatrix}$. Jika $A = B^T$, berapakah nilai $x+y$?",
         options: [
-          "7",
           "5",
           "3",
+          "7", // BENAR (C)
           "9"
         ],
-        correct: 0,
+        correct: 2, // C
         explanationSteps: [
-          "<b>Langkah 1:</b> Cari terlebih dahulu $B^T = \\begin{pmatrix} 7 & 3 \\\\ 2 & 4 \\end{pmatrix}$.",
-          "<b>Langkah 2:</b> Samakan elemen matriks $A = B^T \\rightarrow \\begin{pmatrix} x+y & 3 \\\\ 2 & 4 \\end{pmatrix} = \\begin{pmatrix} 7 & 3 \\\\ 2 & 4 \\end{pmatrix}$.",
-          "<b>Langkah 3:</b> Bandingkan posisi elemen baris 1 kolom 1: $x + y = 7$."
+          "<b>Langkah 1:</b> Cari $B^T = \\begin{pmatrix} 7 & 3 \\\\ 2 & 4 \\end{pmatrix}$.",
+          "<b>Langkah 2:</b> Samakan $A = B^T \\rightarrow \\begin{pmatrix} x+y & 3 \\\\ 2 & 4 \\end{pmatrix} = \\begin{pmatrix} 7 & 3 \\\\ 2 & 4 \\end{pmatrix}$.",
+          "<b>Langkah 3:</b> Bandingkan elemen baris 1 kolom 1: $x + y = 7$."
         ],
-        spokenAudio: "Soal kesamaan matriks A sama dengan B transpose. Langkah pertama, tentukan B transpose dari matriks B, yaitu baris pertama menjadi 7, 3 dan baris kedua 2, 4. Langkah kedua, samakan posisi elemen yang seletak antara A dan B transpose. Elemen kiri atas matriks A adalah x tambah y, sedangkan elemen kiri atas B transpose adalah 7. Maka nilai x tambah y langsung didapatkan yaitu 7.",
+        spokenAudio: "Untuk soal A sama dengan B transpose. Pertama cari B transpose yaitu matriks dengan baris pertama 7, 3 dan baris kedua 2, 4. Samakan posisi elemen kiri atas, didapat x tambah y sama dengan 7, yaitu opsi C.",
         visualType: "matrix_transpose",
         visualData: { orig: [["7","2"],["3","4"]], trans: [["7","3"],["2","4"]] }
       },
@@ -555,18 +531,18 @@
         topic: "Invers Matriks",
         question: "Manakah di antara matriks berikut yang **TIDAK** memiliki invers (Matriks Singular)?",
         options: [
-          "\\begin{pmatrix} 2 & 4 \\\\ 3 & 6 \\end{pmatrix}",
+          "\\begin{pmatrix} 2 & 4 \\\\ 3 & 6 \\end{pmatrix}", // BENAR (A)
           "\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}",
           "\\begin{pmatrix} 5 & 1 \\\\ 2 & 1 \\end{pmatrix}",
           "\\begin{pmatrix} 3 & 0 \\\\ 0 & 3 \\end{pmatrix}"
         ],
-        correct: 0,
+        correct: 0, // A
         explanationSteps: [
-          "<b>Langkah 1:</b> Syarat matriks tidak memiliki invers (singular) adalah nilai determinan $= 0$.",
-          "<b>Langkah 2:</b> Uji pilihan 1: $\\det = (2)(6) - (4)(3) = 12 - 12 = 0$.",
-          "<b>Kesimpulan:</b> Matriks $\\begin{pmatrix} 2 & 4 \\\\ 3 & 6 \\end{pmatrix}$ tidak memiliki invers."
+          "<b>Langkah 1:</b> Matriks tidak punya invers jika determinannya $= 0$.",
+          "<b>Langkah 2:</b> Cek Opsi A: $\\det = (2)(6) - (4)(3) = 12 - 12 = 0$.",
+          "<b>Kesimpulan:</b> Matriks pada Opsi A bersifat Singular."
         ],
-        spokenAudio: "Matriks tidak memiliki invers jika determinannya bernilai nol. Mari kita uji opsi pertama. Determinan dihitung dengan 2 dikali 6 dikurangi 4 dikali 3. Hasilnya adalah 12 dikurangi 12 sama dengan 0. Karena determinannya nol, maka matriks opsi pertama merupakan matriks singular dan tidak mempunyai invers.",
+        spokenAudio: "Matriks tidak memiliki invers jika nilai determinannya nol. Pada opsi A, determinan dihitung dengan 2 dikali 6 dikurangi 4 dikali 3. Hasilnya 12 dikurangi 12 sama dengan nol. Jadi matriks opsi A adalah matriks singular.",
         visualType: "matrix_inverse",
         visualData: { det: "0", adj: [["6","-4"],["-3","2"]] }
       },
@@ -575,19 +551,19 @@
         topic: "Komposisi Fungsi",
         question: "Diketahui $f(x) = 3x - 2$ dan $(f \\circ g)(x) = 6x + 4$. Berapakah rumus fungsi $g(x)$?",
         options: [
-          "2x + 2",
           "2x + 1",
+          "2x + 2", // BENAR (B)
           "3x + 2",
           "2x - 2"
         ],
-        correct: 0,
+        correct: 1, // B
         explanationSteps: [
-          "<b>Langkah 1:</b> Tulis persamaannya: $f(g(x)) = 6x + 4$.",
+          "<b>Langkah 1:</b> $f(g(x)) = 6x + 4$.",
           "<b>Langkah 2:</b> Karena $f(x) = 3x - 2$, maka $3\\cdot g(x) - 2 = 6x + 4$.",
-          "<b>Langkah 3:</b> Pindahkan konstan $-2$: $3\\cdot g(x) = 6x + 4 + 2 \\rightarrow 3\\cdot g(x) = 6x + 6$.",
-          "<b>Langkah 4:</b> Bagi dengan 3: $g(x) = \\frac{6x + 6}{3} = 2x + 2$."
+          "<b>Langkah 3:</b> $3\\cdot g(x) = 6x + 6$.",
+          "<b>Langkah 4:</b> Bagi 3: $g(x) = 2x + 2$."
         ],
-        spokenAudio: "Mencari fungsi g x dari fungsi komposisi f bundaran g. f dari g x sama dengan 6 x ditambah 4. Karena fungsi f merubah input menjadi 3 kali input dikurangi 2, maka 3 g x dikurangi 2 sama dengan 6 x ditambah 4. Pindahkan minus 2 ke ruas kanan menjadi tambah 2, sehingga 3 g x sama dengan 6 x ditambah 6. Bagi kedua ruas dengan 3, didapatkan g x sama dengan 2 x ditambah 2.",
+        spokenAudio: "Mencari rumus g x. Persamaannya adalah 3 g x dikurangi 2 sama dengan 6 x ditambah 4. Pindahkan minus 2 menjadi tambah 2, didapat 3 g x sama dengan 6 x ditambah 6. Bagi kedua ruas dengan 3, diperoleh g x sama dengan 2 x ditambah 2, yaitu opsi B.",
         visualType: "function_flow",
         visualData: { fx: "3x - 2", gx: "2x + 2", res: "6x + 4" }
       },
@@ -596,19 +572,19 @@
         topic: "Lingkaran & Busur",
         question: "Luas juring lingkaran dengan sudut pusat $60^\\circ$ dan jari-jari $r = 21\\text{ cm}$ adalah... (Gunakan $\\pi = \\frac{22}{7}$)",
         options: [
-          "231 cm²",
-          "462 cm²",
-          "132 cm²",
-          "154 cm²"
+          "462\\text{ cm}^2",
+          "132\\text{ cm}^2",
+          "154\\text{ cm}^2",
+          "231\\text{ cm}^2" // BENAR (D)
         ],
-        correct: 0,
+        correct: 3, // D
         explanationSteps: [
           "<b>Langkah 1:</b> Rumus Luas Juring $L_J = \\frac{\\theta}{360^\\circ} \\times \\pi r^2$.",
-          "<b>Langkah 2:</b> Substitusi nilai: $L_J = \\frac{60^\\circ}{360^\\circ} \\times \\frac{22}{7} \\times 21 \\times 21$.",
-          "<b>Langkah 3:</b> Sederhanakan $\\frac{60}{360} = \\frac{1}{6}$ dan $\\frac{21}{7} = 3$.",
+          "<b>Langkah 2:</b> $L_J = \\frac{60^\\circ}{360^\\circ} \\times \\frac{22}{7} \\times 21 \\times 21$.",
+          "<b>Langkah 3:</b> $\\frac{60}{360} = \\frac{1}{6}$ dan $\\frac{21}{7} = 3$.",
           "<b>Langkah 4:</b> $L_J = \\frac{1}{6} \\times 22 \\times 3 \\times 21 = 231\\text{ cm}^2$."
         ],
-        spokenAudio: "Menghitung luas juring lingkaran. Gunakan rumus sudut 60 per 360 dikali pi r kuadrat. 60 per 360 disederhanakan menjadi seperenam. Masukkan pi 22 per 7 dan jari-jari 21 dikali 21. Sederhanakan perkaliannya, maka akan diperoleh hasil akhir luas juring sebesar 231 centimeter persegi.",
+        spokenAudio: "Luas juring dihitung dengan sudut 60 per 360 dikali pi r kuadrat. Seperenam dikali 22 per 7 dikali 21 dikali 21. Sederhanakan perkaliannya, hasil akhirnya adalah 231 cm persegi, opsi D.",
         visualType: "circle_arc",
         visualData: { angle: 60, radius: 21, arcLength: 22 }
       },
@@ -617,18 +593,18 @@
         topic: "Komposisi Fungsi",
         question: "Diketahui $f(x) = x + 4$ dan $g(x) = 2x - 1$. Nilai dari $(g \\circ f)(3)$ adalah...",
         options: [
-          "13",
           "11",
+          "13", // BENAR (B)
           "9",
           "15"
         ],
-        correct: 0,
+        correct: 1, // B
         explanationSteps: [
-          "<b>Langkah 1:</b> Hitung nilai $f(3)$ terlebih dahulu: $f(3) = 3 + 4 = 7$.",
-          "<b>Langkah 2:</b> Masukkan hasil $f(3) = 7$ ke dalam fungsi $g(x)$: $(g \\circ f)(3) = g(7)$.",
+          "<b>Langkah 1:</b> Hitung $f(3) = 3 + 4 = 7$.",
+          "<b>Langkah 2:</b> Masukkan ke fungsi $g$: $g(f(3)) = g(7)$.",
           "<b>Langkah 3:</b> Hitung $g(7) = 2(7) - 1 = 14 - 1 = 13$."
         ],
-        spokenAudio: "Mencari nilai g bundaran f untuk x sama dengan 3. Pertama, evaluasi f 3 terlebih dahulu. f 3 sama dengan 3 ditambah 4 yaitu 7. Kedua, masukkan hasil 7 ini ke fungsi g x. g 7 sama dengan 2 dikali 7 dikurangi 1. 14 dikurangi 1 sama dengan 13.",
+        spokenAudio: "Mencari nilai g bundaran f untuk x sama dengan 3. Pertama hitung f 3 yaitu 3 ditambah 4 sama dengan 7. Kedua masukkan nilai 7 ke fungsi g x, menjadi 2 dikali 7 dikurangi 1. Hasilnya 14 dikurangi 1 sama dengan 13, opsi B.",
         visualType: "function_flow",
         visualData: { fx: "x + 4", gx: "2x - 1", res: "13" }
       },
@@ -637,19 +613,18 @@
         topic: "Lingkaran & Busur",
         question: "Persamaan lingkaran yang berpusat di titik $(0,0)$ dan melalui titik $(3, 4)$ adalah...",
         options: [
-          "x² + y² = 25",
-          "x² + y² = 7",
-          "x² + y² = 12",
-          "x² + y² = 16"
+          "x^2 + y^2 = 7",
+          "x^2 + y^2 = 12",
+          "x^2 + y^2 = 25", // BENAR (C)
+          "x^2 + y^2 = 16"
         ],
-        correct: 0,
+        correct: 2, // C
         explanationSteps: [
-          "<b>Langkah 1:</b> Persamaan umum lingkaran pusat $(0,0)$ adalah $x^2 + y^2 = r^2$.",
-          "<b>Langkah 2:</b> Substitusi titik $(x, y) = (3, 4)$ untuk mencari nilai $r^2$.",
-          "<b>Langkah 3:</b> $r^2 = (3)^2 + (4)^2 = 9 + 16 = 25$.",
-          "<b>Langkah 4:</b> Tulis persamaan utuh: $x^2 + y^2 = 25$."
+          "<b>Langkah 1:</b> Persamaan lingkaran pusat $(0,0)$ adalah $x^2 + y^2 = r^2$.",
+          "<b>Langkah 2:</b> Substitusi titik $(3, 4) \\rightarrow r^2 = 3^2 + 4^2 = 9 + 16 = 25$.",
+          "<b>Langkah 3:</b> Persamaan lingkarannya $x^2 + y^2 = 25$."
         ],
-        spokenAudio: "Menentukan persamaan lingkaran berpusat di 0,0 yang melalui titik 3, 4. Gunakan formula x kuadrat ditambah y kuadrat sama dengan r kuadrat. Substitusikan x dengan 3 dan y dengan 4. 3 kuadrat adalah 9, dan 4 kuadrat adalah 16. 9 ditambah 16 menghasilkan jari-jari kuadrat sebesar 25. Sehingga persamaan lingkarannya adalah x kuadrat ditambah y kuadrat sama dengan 25.",
+        spokenAudio: "Persamaan lingkaran berpusat di titik 0,0 melalui titik 3, 4. Cari nilai r kuadrat dengan menjumlahkan 3 kuadrat ditambah 4 kuadrat, yaitu 9 ditambah 16 sama dengan 25. Maka persamaannya adalah x kuadrat ditambah y kuadrat sama dengan 25, opsi C.",
         visualType: "circle_arc",
         visualData: { angle: 360, radius: 5, arcLength: 31.4 }
       }
@@ -664,26 +639,26 @@
       const contentKuis = document.getElementById('tab-kuis-content');
 
       if(tab === 'materi') {
-        btnMateri.className = 'px-4 py-2 rounded-xl font-semibold text-sm transition-all tab-active flex items-center gap-2';
-        btnKuis.className = 'px-4 py-2 rounded-xl font-semibold text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-2';
+        btnMateri.className = 'px-4 py-2 rounded-xl font-bold text-sm transition-all tab-active flex items-center gap-2';
+        btnKuis.className = 'px-4 py-2 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-2';
         contentMateri.classList.remove('hidden');
         contentKuis.classList.add('hidden');
         stopAudio();
+        clearInterval(timerInterval);
       } else {
-        btnKuis.className = 'px-4 py-2 rounded-xl font-semibold text-sm transition-all tab-active flex items-center gap-2';
-        btnMateri.className = 'px-4 py-2 rounded-xl font-semibold text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-2';
+        btnKuis.className = 'px-4 py-2 rounded-xl font-bold text-sm transition-all tab-active flex items-center gap-2';
+        btnMateri.className = 'px-4 py-2 rounded-xl font-bold text-sm transition-all text-slate-600 hover:text-slate-900 flex items-center gap-2';
         contentKuis.classList.remove('hidden');
         contentMateri.classList.add('hidden');
         renderQuestion();
       }
     }
 
-    // --- MATERI NAVIGATION LOGIC ---
+    // --- MATERI TOPIC RENDERER ---
     function showTopic(topicKey) {
       currentTopic = topicKey;
       const data = materiData[topicKey];
 
-      // Update Active UI Button Style
       ['transpose', 'invers', 'komposisi', 'lingkaran'].forEach(key => {
         const btn = document.getElementById(`topic-btn-${key}`);
         if(key === topicKey) {
@@ -693,23 +668,21 @@
         }
       });
 
-      // Render Detail
       const detailContainer = document.getElementById('materi-detail');
       detailContainer.innerHTML = `
         <div class="space-y-4">
           <div class="flex items-center justify-between flex-wrap gap-2">
-            <span class="px-3 py-1 bg-slate-100 text-slate-700 font-semibold rounded-full text-xs">
+            <span class="px-3 py-1 bg-slate-100 text-slate-700 font-bold rounded-full text-xs">
               <i class="fa-solid fa-bookmark text-brand-teal mr-1"></i> ${data.badge}
             </span>
           </div>
-          <h2 class="text-2xl font-bold text-slate-900">${data.title}</h2>
-          <p class="text-sm text-slate-500">${data.subtitle}</p>
+          <h2 class="text-2xl font-extrabold text-slate-900">${data.title}</h2>
+          <p class="text-xs sm:text-sm text-slate-500">${data.subtitle}</p>
           <hr class="border-slate-200 my-4"/>
           ${data.content}
         </div>
       `;
 
-      // Trigger MathJax / KaTeX rendering
       renderMathInElement(detailContainer, {
         delimiters: [
           {left: '$$', right: '$$', display: true},
@@ -721,12 +694,25 @@
     // --- QUIZ SYSTEM LOGIC ---
     function renderQuestion() {
       stopAudio();
+      clearInterval(timerInterval);
       document.getElementById('quiz-explanation-panel').classList.add('hidden');
 
       if(quizIndex >= quizQuestions.length) {
         renderQuizCompletion();
         return;
       }
+
+      // Start Timer
+      quizTimer = 60;
+      document.getElementById('quiz-timer').innerText = `${quizTimer}s`;
+      timerInterval = setInterval(() => {
+        quizTimer--;
+        document.getElementById('quiz-timer').innerText = `${quizTimer}s`;
+        if(quizTimer <= 0) {
+          clearInterval(timerInterval);
+          submitAnswer(-1); // Time out
+        }
+      }, 1000);
 
       const q = quizQuestions[quizIndex];
       document.getElementById('quiz-progress').innerText = `Soal ${quizIndex + 1} / ${quizQuestions.length}`;
@@ -735,20 +721,20 @@
       quizBox.innerHTML = `
         <div class="space-y-6">
           <div class="flex items-center justify-between">
-            <span class="px-3 py-1 bg-teal-100 text-brand-teal font-bold rounded-full text-xs">
+            <span class="px-3 py-1 bg-teal-100 text-brand-teal font-extrabold rounded-full text-xs">
               ${q.topic}
             </span>
-            <span class="text-xs text-slate-400 font-semibold">Pilih satu jawaban benar</span>
+            <span class="text-xs text-slate-400 font-semibold">Pilih satu opsi (A, B, C, atau D)</span>
           </div>
 
-          <h3 class="text-lg md:text-xl font-bold text-slate-900 leading-snug">
+          <h3 class="text-base sm:text-lg md:text-xl font-bold text-slate-900 leading-snug">
             ${q.question}
           </h3>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
             ${q.options.map((opt, idx) => `
-              <button onclick="submitAnswer(${idx})" class="p-4 rounded-xl border-2 border-slate-200 hover:border-brand-teal hover:bg-teal-50/50 transition text-left flex items-center justify-between group">
-                <span class="font-medium text-slate-800 text-sm">
+              <button onclick="submitAnswer(${idx})" class="p-4 rounded-2xl border-2 border-slate-200 hover:border-brand-teal hover:bg-teal-50/50 transition text-left flex items-center justify-between group">
+                <span class="font-semibold text-slate-800 text-xs sm:text-sm">
                   <span class="inline-block w-7 h-7 rounded-lg bg-slate-100 text-slate-600 font-bold text-center leading-7 mr-2 group-hover:bg-brand-teal group-hover:text-white transition">
                     ${String.fromCharCode(65 + idx)}
                   </span>
@@ -770,6 +756,7 @@
     }
 
     function submitAnswer(selectedIndex) {
+      clearInterval(timerInterval);
       const q = quizQuestions[quizIndex];
       const isCorrect = (selectedIndex === q.correct);
 
@@ -783,32 +770,33 @@
       document.getElementById('quiz-score').innerText = quizScore;
       document.getElementById('quiz-streak').innerText = `🔥 ${quizStreak}`;
 
-      // Render Visual & Explanation Panel
-      renderExplanationPanel(q, isCorrect);
+      renderExplanationPanel(q, isCorrect, selectedIndex);
     }
 
-    function renderExplanationPanel(q, isCorrect) {
+    function renderExplanationPanel(q, isCorrect, selectedIndex) {
       const panel = document.getElementById('quiz-explanation-panel');
       const visualBox = document.getElementById('explanation-visual-box');
       const stepsBox = document.getElementById('explanation-steps-box');
 
       panel.classList.remove('hidden');
 
-      // 1. Render Steps Content
+      const correctOptionLetter = String.fromCharCode(65 + q.correct);
+      const userOptionLetter = selectedIndex >= 0 ? String.fromCharCode(65 + selectedIndex) : "Waktu Habis";
+
       stepsBox.innerHTML = `
-        <div class="mb-3 p-3 rounded-xl ${isCorrect ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'} font-bold flex items-center gap-2 text-xs">
+        <div class="mb-3 p-3 rounded-xl ${isCorrect ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' : 'bg-rose-100 text-rose-800 border border-rose-300'} font-extrabold flex items-center gap-2 text-xs">
           <i class="fa-solid ${isCorrect ? 'fa-circle-check text-emerald-600' : 'fa-circle-xmark text-rose-600'} text-base"></i>
-          ${isCorrect ? 'Jawaban Kamu Tepat Sekali! Masya Allah +10 Poin' : 'Jawaban Belum Tepat. Mari Pelajari Pengerjaannya di Bawah Ini!'}
+          ${isCorrect ? `Jawaban Kamu Benar (${userOptionLetter})! +10 Poin` : `Jawaban Pilihanmu: ${userOptionLetter}. Jawaban Benar adalah Opsi (${correctOptionLetter}).`}
         </div>
         ${q.explanationSteps.map(step => `<div class="p-2.5 bg-white rounded-xl border border-slate-200 text-xs text-slate-700">${step}</div>`).join('')}
       `;
 
-      // 2. Render Dynamic Interactive Diagram/SVG based on Topic
+      // Render Dynamic Diagram / SVG Visualization
       if(q.visualType === 'matrix_transpose') {
         visualBox.innerHTML = `
           <div class="flex items-center gap-4 text-xs font-bold">
             <div class="text-center">
-              <span class="block text-slate-500 mb-1">Matriks A</span>
+              <span class="block text-slate-500 mb-1">Matriks Semula</span>
               <div class="math-matrix py-2">
                 ${q.visualData.orig[0][0]} &nbsp; ${q.visualData.orig[0][1]}<br>
                 ${q.visualData.orig[1][0]} &nbsp; ${q.visualData.orig[1][1]}
@@ -816,7 +804,7 @@
             </div>
             <i class="fa-solid fa-right-left text-brand-teal text-lg"></i>
             <div class="text-center">
-              <span class="block text-brand-teal mb-1">Transpose Aᵀ</span>
+              <span class="block text-brand-teal mb-1">Transpose</span>
               <div class="math-matrix py-2 border-brand-teal bg-teal-50">
                 ${q.visualData.trans[0][0]} &nbsp; ${q.visualData.trans[0][1]}<br>
                 ${q.visualData.trans[1][0]} &nbsp; ${q.visualData.trans[1][1]}
@@ -827,11 +815,11 @@
       } else if(q.visualType === 'matrix_inverse') {
         visualBox.innerHTML = `
           <div class="text-center space-y-2 text-xs">
-            <div class="px-3 py-1.5 bg-purple-50 text-brand-purple rounded-lg font-bold border border-purple-200">
+            <div class="px-3 py-1.5 bg-violet-50 text-brand-violet rounded-lg font-bold border border-violet-200">
               Determinan (ad - bc) = ${q.visualData.det}
             </div>
             <div class="text-slate-600 font-semibold">Adjoin Matriks:</div>
-            <div class="math-matrix py-2 border-brand-purple bg-purple-50 font-bold">
+            <div class="math-matrix py-2 border-brand-violet bg-violet-50 font-bold">
               ${q.visualData.adj[0][0]} &nbsp; ${q.visualData.adj[0][1]}<br>
               ${q.visualData.adj[1][0]} &nbsp; ${q.visualData.adj[1][1]}
             </div>
@@ -845,19 +833,19 @@
               <i class="fa-solid fa-plus text-slate-400"></i>
               <span class="bg-amber-100 text-amber-900 px-3 py-1.5 rounded-lg border border-amber-300 font-semibold">g(x) = ${q.visualData.gx}</span>
             </div>
-            <i class="fa-solid fa-arrow-down text-brand-coral"></i>
-            <div class="bg-brand-coral text-white px-4 py-2 rounded-xl font-bold shadow-sm">
+            <i class="fa-solid fa-arrow-down text-brand-amber"></i>
+            <div class="bg-brand-amber text-white px-4 py-2 rounded-xl font-extrabold shadow-sm">
               Hasil: ${q.visualData.res}
             </div>
           </div>
         `;
       } else if(q.visualType === 'circle_arc') {
         visualBox.innerHTML = `
-          <svg width="160" height="160" viewBox="0 0 160 160">
+          <svg width="150" height="150" viewBox="0 0 160 160">
             <circle cx="80" cy="80" r="55" fill="none" stroke="#E2E8F0" stroke-width="4"/>
             <path d="M 80 80 L 135 80 A 55 55 0 0 0 80 25 Z" fill="rgba(13, 148, 136, 0.2)" stroke="#0D9488" stroke-width="2"/>
-            <circle cx="80" cy="80" r="4" fill="#1E1B4B"/>
-            <text x="80" y="95" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">Sudut ${q.visualData.angle}°</text>
+            <circle cx="80" cy="80" r="4" fill="#0F172A"/>
+            <text x="80" y="98" text-anchor="middle" class="text-[10px] font-bold fill-slate-700">Sudut ${q.visualData.angle}°</text>
           </svg>
         `;
       }
@@ -869,7 +857,6 @@
         ]
       });
 
-      // Prepare Audio Text
       fullAudioScript = q.spokenAudio;
       playAudioStepByStep();
     }
@@ -896,37 +883,37 @@
       }
 
       quizBox.innerHTML = `
-        <div class="text-center py-8 space-y-6">
-          <div class="w-20 h-20 rounded-full bg-gradient-to-tr from-brand-teal to-brand-purple text-white flex items-center justify-center text-3xl font-bold mx-auto shadow-lg">
+        <div class="text-center py-6 space-y-6">
+          <div class="w-20 h-20 rounded-3xl bg-gradient-to-tr from-brand-teal via-brand-amber to-brand-violet text-white flex items-center justify-center text-3xl font-extrabold mx-auto shadow-lg shadow-teal-500/20">
             <i class="fa-solid fa-trophy"></i>
           </div>
 
           <div>
             <h2 class="text-2xl font-black text-slate-900">Kuis Selesai!</h2>
-            <p class="text-xs text-slate-500 mt-1">Berikut adalah ringkasan capaian belajar kamu:</p>
+            <p class="text-xs text-slate-500 mt-1">Ringkasan Capaian Pembelajaran Kamu</p>
           </div>
 
           <div class="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-lg mx-auto">
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-              <span class="text-xs text-slate-500 block">Total Skor</span>
+              <span class="text-[11px] text-slate-500 block font-semibold">Total Skor</span>
               <span class="text-2xl font-black text-brand-teal">${quizScore} / 100</span>
             </div>
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-              <span class="text-xs text-slate-500 block">Predikat</span>
-              <span class="text-sm font-bold text-brand-purple">${predikat}</span>
+              <span class="text-[11px] text-slate-500 block font-semibold">Predikat</span>
+              <span class="text-sm font-bold text-brand-violet">${predikat}</span>
             </div>
             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200 col-span-2 md:col-span-1">
-              <span class="text-xs text-slate-500 block">Soal Benar</span>
-              <span class="text-2xl font-black text-brand-coral">${quizScore / 10} dari 10</span>
+              <span class="text-[11px] text-slate-500 block font-semibold">Soal Benar</span>
+              <span class="text-2xl font-black text-brand-amber">${quizScore / 10} dari 10</span>
             </div>
           </div>
 
-          <div class="p-4 bg-teal-50 border border-teal-200 rounded-2xl max-w-lg mx-auto text-xs text-teal-900">
-            <i class="fa-solid fa-heart-pulse mr-1"></i> ${apresiasi}
+          <div class="p-4 bg-teal-50 border border-teal-200 rounded-2xl max-w-lg mx-auto text-xs text-teal-900 font-semibold">
+            <i class="fa-solid fa-star text-brand-amber mr-1"></i> ${apresiasi}
           </div>
 
           <div>
-            <button onclick="restartQuiz()" class="px-6 py-3 rounded-xl bg-brand-teal hover:bg-teal-700 text-white font-bold transition shadow-md">
+            <button onclick="restartQuiz()" class="px-6 py-3 rounded-2xl bg-brand-teal hover:bg-teal-700 text-white font-extrabold transition shadow-lg shadow-teal-500/20">
               <i class="fa-solid fa-rotate-right mr-2"></i> Ulangi Kuis
             </button>
           </div>
@@ -945,12 +932,8 @@
 
     // --- AUDIO TEXT-TO-SPEECH (SPEECH SYNTHESIS) ---
     function playAudioStepByStep() {
-      if(!('speechSynthesis' in window)) {
-        alert("Fitur narasi audio tidak didukung di browser ini.");
-        return;
-      }
-
-      stopAudio(); // stop previous
+      if(!('speechSynthesis' in window)) return;
+      stopAudio();
 
       if(!fullAudioScript) return;
 
@@ -960,12 +943,9 @@
       const speedSelect = document.getElementById('audio-speed');
       currentSpeechUtterance.rate = parseFloat(speedSelect.value) || 1.0;
 
-      // Try selecting an Indonesian voice if available
       const voices = speechSynth.getVoices();
       const idVoice = voices.find(v => v.lang.includes('id') || v.lang.includes('ID'));
-      if(idVoice) {
-        currentSpeechUtterance.voice = idVoice;
-      }
+      if(idVoice) currentSpeechUtterance.voice = idVoice;
 
       speechSynth.speak(currentSpeechUtterance);
     }
@@ -985,15 +965,11 @@
     }
 
     function changeAudioSpeed(speed) {
-      if(speechSynth.speaking) {
-        playAudioStepByStep();
-      }
+      if(speechSynth.speaking) playAudioStepByStep();
     }
 
-    // Initialize default View on Load
     window.onload = function() {
       showTopic('transpose');
-      // Ensure WebSpeech voices are loaded
       if ('speechSynthesis' in window) {
         window.speechSynthesis.onvoiceschanged = function() {
           window.speechSynthesis.getVoices();
